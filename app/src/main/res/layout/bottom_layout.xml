@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:padding="@dimen/dimen_15dp"
+        android:background="@color/gray_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvAddToCart"
+        android:id="@+id/tvAddToList"
+        android:text="@string/add_to_list"
+        android:layout_width="0dp"
+        android:gravity="center"
+        style="@style/font_color_gray"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:padding="@dimen/dimen_15dp"
+        android:background="@color/red_color"
+        android:gravity="center"
+        style="@style/font_color_white"
+        app:layout_constraintStart_toEndOf="@+id/tvAddToList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvAddToCart"
+        android:text="@string/add_to_cart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

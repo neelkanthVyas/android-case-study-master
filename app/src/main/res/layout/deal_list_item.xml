@@ -1,0 +1,55 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/deal_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/deal_list_item_image_view"
+        android:layout_width="@dimen/deal_list_item_image_size"
+        android:layout_height="@dimen/deal_list_item_image_size"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deal_list_item_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        style="@style/font_color"
+        tool:text="the item title is here"
+        android:id="@+id/deal_list_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/deal_list_item_image_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_marginTop="20dp"
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_2dp"
+        android:background="@color/gray_color"
+        app:layout_constraintBottom_toTopOf="@id/deal_list_item_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/deal_list_item_title"
+        app:layout_constraintTop_toBottomOf="@id/deal_list_item_title" />
+
+    <TextView
+        style="@style/font_color"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        tool:text="$400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/deal_list_item_title"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:id="@+id/deal_list_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
