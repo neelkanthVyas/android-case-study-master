@@ -20,5 +20,8 @@ data class ItemDetails(
 	val title: String? = null,
 
 	@field:SerializedName("aisle")
-	val aisle: String? = null
+	val aisle: String? = null,
+
+	@field:SerializedName("sale_price")
+	val salePrice: SalePrice? = null
 )

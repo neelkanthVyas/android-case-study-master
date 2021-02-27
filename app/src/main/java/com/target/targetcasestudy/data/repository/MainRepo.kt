@@ -5,5 +5,5 @@ import com.target.targetcasestudy.data.api.ApiHelper
 class MainRepo(private val apiHelper: ApiHelper) {
 
     suspend fun getListOfItems() = apiHelper.getListOfItems()
-    suspend fun getDetailsOfTheItem() = apiHelper.getDetailsOfTheItem()
+    suspend fun getDetailsOfTheItem(id: Int?) = apiHelper.getDetailsOfTheItem(id)
 }

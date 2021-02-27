@@ -5,9 +5,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.target.targetcasestudy.R
+import com.target.targetcasestudy.data.model.ProductsItem
+import com.target.targetcasestudy.ui.main.adapter.FragmentCallback
 import com.target.targetcasestudy.ui.payment.PaymentDialogFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentCallback {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -34,4 +36,11 @@ class MainActivity : AppCompatActivity() {
       else -> false
     }
   }
+
+  override fun onClickCell(fragment: DealListFragment?, productsItem: ProductsItem?) {
+    supportFragmentManager.beginTransaction()
+            .replace(R.id.container,
+                    DealItemFragment(productsItem)
+            )
+            .commit()  }
 }

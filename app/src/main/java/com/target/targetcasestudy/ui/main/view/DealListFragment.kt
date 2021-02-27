@@ -14,20 +14,24 @@ import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.api.ApiHelper
 import com.target.targetcasestudy.data.api.RetrofitBuilder
 import com.target.targetcasestudy.data.model.ListOfItems
+import com.target.targetcasestudy.data.model.ProductsItem
 import com.target.targetcasestudy.ui.base.ViewModelFactory
 import com.target.targetcasestudy.ui.main.adapter.DealItemAdapter
+import com.target.targetcasestudy.ui.main.adapter.OnRecyclerItemClicked
 import com.target.targetcasestudy.ui.main.viewmodel.DealListViewModel
 import com.target.targetcasestudy.utils.Status
 import kotlinx.android.synthetic.main.fragment_deal_list.*
 
 
-class DealListFragment : Fragment() {
+class DealListFragment : Fragment(), OnRecyclerItemClicked {
 
   private lateinit var viewModel: DealListViewModel
   private lateinit var adapter: DealItemAdapter
+  private var mCallback: MainActivity? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    mCallback = activity as MainActivity?
     setupViewModel()
   }
 
@@ -46,7 +50,7 @@ class DealListFragment : Fragment() {
 
   private fun setupUI() {
     recycler_view.layoutManager = LinearLayoutManager(activity)
-    adapter = DealItemAdapter(arrayListOf())
+    adapter = DealItemAdapter(arrayListOf(),this)
     val dividerItemDecoration = DividerItemDecoration(
       recycler_view.context,
       (recycler_view.layoutManager as LinearLayoutManager).orientation
@@ -91,4 +95,10 @@ class DealListFragment : Fragment() {
   ): View? {
     return inflater.inflate(R.layout.fragment_deal_list, container, false)
   }
+
+  override fun clickedItemCallBack(productsItem: ProductsItem?) {
+    mCallback?.onClickCell(this,productsItem)
+  }
+
+
 }

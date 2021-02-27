@@ -1,6 +1,8 @@
 package com.target.targetcasestudy.ui.payment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.target.targetcasestudy.R
+import com.target.targetcasestudy.data.CredCardValidator
 
 /**
  * Dialog that displays a minimal credit card entry form.
@@ -23,26 +26,46 @@ import com.target.targetcasestudy.R
  */
 class PaymentDialogFragment : DialogFragment() {
 
-  private lateinit var submitButton: Button
-  private lateinit var creditCardInput: EditText
+    private lateinit var submitButton: Button
+    private lateinit var creditCardInput: EditText
+    private lateinit var credCardValidator: CredCardValidator
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        credCardValidator = CredCardValidator()
+    }
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View? {
-    val root = inflater.inflate(R.layout.dialog_payment, container, false)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.dialog_payment, container, false)
 
-    submitButton = root.findViewById(R.id.submit)
-    creditCardInput = root.findViewById(R.id.card_number)
-    val cancelButton: Button = root.findViewById(R.id.cancel)
+        submitButton = root.findViewById(R.id.submit)
+        creditCardInput = root.findViewById(R.id.card_number)
+        submitButton.visibility = View.GONE
+        creditCardInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
 
-    cancelButton.setOnClickListener { dismiss() }
-    submitButton.setOnClickListener { dismiss() }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
-    // TODO enable the submit button based on card number validity using Validators.validateCreditCard()
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (credCardValidator.validateCreditCard(creditCardInput.text.toString())) {
+                    submitButton.visibility = View.VISIBLE
+                } else {
+                    submitButton.visibility = View.GONE
+                }
+            }
 
-    return root
-  }
+        })
+
+        val cancelButton: Button = root.findViewById(R.id.cancel)
+        cancelButton.setOnClickListener { dismiss() }
+        submitButton.setOnClickListener { dismiss() }
+
+        return root
+    }
 
 }

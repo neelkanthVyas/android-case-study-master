@@ -19,6 +19,7 @@
 
 
     <TextView
+        android:layout_marginStart="@dimen/dimen_15dp"
         style="@style/font_color"
         tool:text="the item title is here"
         android:id="@+id/deal_list_item_title"
