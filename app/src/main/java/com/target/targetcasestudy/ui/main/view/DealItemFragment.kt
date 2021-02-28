@@ -2,6 +2,9 @@ package com.target.targetcasestudy.ui.main.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Html
+import android.text.SpannableString
+import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ import com.target.targetcasestudy.ui.base.ViewModelFactory
 import com.target.targetcasestudy.ui.main.viewmodel.DealItemViewModel
 import com.target.targetcasestudy.utils.Status
 import kotlinx.android.synthetic.main.fragment_deal_item.*
+
 
 class DealItemFragment(private var productsItem: ProductsItem?) : Fragment() {
 
@@ -75,11 +79,15 @@ class DealItemFragment(private var productsItem: ProductsItem?) : Fragment() {
   @SuppressLint("SetTextI18n")
   private fun setTheData(items: ItemDetails) {
     tvOrgPrice.text = items.salePrice?.displayString ?: BASE_VALUE
-    tvNewPrice.text = getString(R.string.line,(items.regularPrice?.displayString ?: BASE_VALUE))
+    val regValue = "Reg: "+(items.regularPrice?.displayString ?: BASE_VALUE)
+    val spannableValue = SpannableString(regValue)
+    spannableValue.setSpan(StrikethroughSpan(),5,regValue.length,0)
+    tvNewPrice.text = spannableValue
     tvTitle.text =items.title
     tvSummary.text =items.description
     Glide.with(ivHolder.context)
             .load(items.imageUrl)
+            .placeholder(R.drawable.ic_launcher_foreground)
             .into(ivHolder)
   }
 

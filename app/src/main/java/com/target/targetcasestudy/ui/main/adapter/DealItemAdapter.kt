@@ -43,6 +43,7 @@ class DealItemAdapter(private val itemList: ArrayList<ProductsItem?>, dealListFr
                 deal_list_item_price.text = items.regularPrice?.displayString ?: BASE_VALUE
                 Glide.with(deal_list_item_image_view.context)
                         .load(items.imageUrl)
+                        .placeholder(R.drawable.ic_launcher_foreground)
                         .into(deal_list_item_image_view)
             }
         }

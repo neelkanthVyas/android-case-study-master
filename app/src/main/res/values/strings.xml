@@ -12,5 +12,5 @@
   <string name="credit_card_number_hint">Credit card number</string>
     <string name="add_to_list">add to list</string>
   <string name="add_to_cart">add to cart</string>
-  <string name="line"> Reg: <strike> %s </strike> </string>
+  <string name="line"> Reg:  %s </string>
 </resources>

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:padding="@dimen/dimen_15dp"
+        android:padding="@dimen/dimen_10dp"
         android:background="@color/gray_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         style="@style/font_color_gray"
         android:layout_height="wrap_content" />
     <TextView
-        android:padding="@dimen/dimen_15dp"
+        android:padding="@dimen/dimen_10dp"
         android:background="@color/red_color"
         android:gravity="center"
         style="@style/font_color_white"
